@@ -7,6 +7,30 @@ let libFont;
 let asteroidimg;
 let asteroidbg;
 
+function updateGestureBannerSelection() {
+  const banner = document.getElementById('gesture-banner');
+  if (!banner) {
+    return;
+  }
+
+  const shouldShow = !currentSong;
+  banner.classList.toggle('is-hidden', !shouldShow);
+  document.body.classList.toggle('gesture-banner-visible', shouldShow);
+  if (typeof requestRelayout === 'function') {
+    requestRelayout();
+  }
+}
+
+function getGestureBannerOffset() {
+  const banner = document.getElementById('gesture-banner');
+  if (!banner || banner.classList.contains('is-hidden')) {
+    return 0;
+  }
+  return Math.ceil(banner.getBoundingClientRect().height);
+}
+
+updateGestureBannerSelection();
+
 function preload() {
   dashFont = loadFont('assets/SourceCodePro-SemiBold.ttf');
   libFont = loadFont('assets/Platypi-Regular.ttf');

@@ -6,7 +6,8 @@ class soundToggleButton {
   constructor(buf, text, song) {
     this.button = createButton(text);
     // let buttonY = (buf.height - this.button.height) / 2;
-    this.button.position(buttonX, 20);
+    const yOffset = getGestureBannerOffset();
+    this.button.position(buttonX, 20 + yOffset);
     this.button.mousePressed(() => toggleSong(song));
     this.song = song;
     soundButtons.push(this);
@@ -21,8 +22,9 @@ class soundToggleButton {
 
 function relayoutButtons() {
   let x = 10;
+  const yOffset = getGestureBannerOffset();
   soundButtons.forEach((soundButton) => {
-    soundButton.button.position(x, 20);
+    soundButton.button.position(x, 20 + yOffset);
     const width = soundButton.button.elt.getBoundingClientRect().width;
     x += width + 10;
   });
@@ -114,6 +116,10 @@ function toggleSong(song) {
       soundButton.button.removeClass('audio-selected');
     }
   });
+
+  if (typeof updateGestureBannerSelection === 'function') {
+    updateGestureBannerSelection();
+  }
 }
 
 const setupButtons = (buf) => {
