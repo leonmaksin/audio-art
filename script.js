@@ -3,10 +3,11 @@ let currentSong;
 let noteLiterals = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];;
 const nbins = 8192;
 let dashFont;
+let libFont;
+let asteroidimg;
+let asteroidbg;
 
 function preload() {
-  song1 = loadSound('music/Clair-de-lune-piano.mp3');
-  song2 = loadSound('music/symphony9.mp3');
   dashFont = loadFont('assets/SourceCodePro-SemiBold.ttf');
   libFont = loadFont('assets/Platypi-Regular.ttf');
   asteroidimg = loadImage('assets/asteroid.png');

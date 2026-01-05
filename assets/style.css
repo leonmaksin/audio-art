@@ -2,7 +2,7 @@ button {
   font-size: 14px;
   border: none;
   border-radius: 5px;
-  padding: 5px;
+  padding: 5px 10px;
   color: #292929;
   background: #cac3cb;
 }
@@ -14,4 +14,29 @@ button:hover {
 
 button.audio-selected {
   background: #d6c7ff;
+}
+
+button.audio-loading {
+  position: relative;
+  padding-right: 30px;
+}
+
+button.audio-loading::after {
+  content: "";
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  border: 2px solid #292929;
+  border-top-color: transparent;
+  border-radius: 50%;
+  transform: translateY(-50%) rotate(0deg);
+  animation: audio-spinner 0.8s linear infinite;
+}
+
+@keyframes audio-spinner {
+  to {
+    transform: translateY(-50%) rotate(360deg);
+  }
 }
