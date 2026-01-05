@@ -99,8 +99,8 @@ function toggleSong(song) {
 
   currentSong = song;
   if (currentSong == mic) {
-    mic.start();
-    fft.setInput(mic);
+    userStartAudio();
+    mic.start(() => fft.setInput(mic));
   } else if (currentSong.sound) {
     currentSong.sound.play();
   } else {
