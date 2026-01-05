@@ -1,4 +1,5 @@
 let buttonX;
+let soundButtons = [];
 
 class soundToggleButton {
   constructor(buf, text, song) {
@@ -6,6 +7,8 @@ class soundToggleButton {
     // let buttonY = (buf.height - this.button.height) / 2;
     this.button.position(buttonX, 20);
     this.button.mousePressed(() => toggleSong(song));
+    this.song = song;
+    soundButtons.push(this);
 
     buttonX += this.button.width + 10;
   }
@@ -28,6 +31,14 @@ function toggleSong(song) {
   } else {
     song.play();
   }
+
+  soundButtons.forEach((soundButton) => {
+    if (soundButton.song === currentSong) {
+      soundButton.button.addClass('audio-selected');
+    } else {
+      soundButton.button.removeClass('audio-selected');
+    }
+  });
 }
 
 const setupButtons = (buf) => {

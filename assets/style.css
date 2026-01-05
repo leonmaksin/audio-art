@@ -11,3 +11,7 @@ button:hover {
   background: #89858a;
   cursor: pointer;
 }
+
+button.audio-selected {
+  background: #d6c7ff;
+}
