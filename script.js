@@ -76,8 +76,6 @@ function setup() {
   // ));
 
   buffers.forEach((buffer) => buffer.setup());
-
-  toggleSong(song1);
 }
 
 function draw() {
